@@ -1,0 +1,29 @@
+<div class="banner-list" style="background-image: url(https://images.unsplash.com/photo-1578674473215-9e07ee2e577d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTQ4fHxtb3ZpZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60)">
+<%= link_to 'Add a movie', new_movie_path(@movie), class: "btn btn-success"  %>
+</div>
+
+
+<div class="movie-cards">
+  <div class="list-text">
+    <h3>My Movies</h3>
+  </div>
+
+  <div class="movie-card">
+        <% @movies.each do |movie| %>
+          <div class="list-group-item">
+          <%= image_tag movie.poster_url, class:"poster-img" %>
+            <div class="movie-card-text">
+              <h4><strong><%= movie.title %> • <%= movie.rating %><i class="fas fa-star star-yellow"></i></strong></h4>
+              <p class="overflow-ellipsis"><%= movie.overview %></p>
+              <div class="show-delete">
+                <%= link_to "See more", movie_path(movie) %>
+                <%= link_to "Delete",
+                              movie_path(movie),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+  </div>
+</div>

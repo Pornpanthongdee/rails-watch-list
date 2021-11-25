@@ -1,0 +1,25 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "https://mpng.subpng.com/20180330/fow/kisspng-roll-film-logo-cinema-roll-5abe46881c4265.5821418815224193361158.jpg" %>
+    <% end %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active nav-link">
+        <%= link_to "My Movies", movies_path %>
+      </li>
+      <li class="nav-item nav-link">
+        <%= link_to 'My lists', lists_path %>
+      </li>
+      <li class="nav-item nav-link">
+        <%= link_to 'New list', new_list_path(@list) %>
+      </li>
+
+    </ul>
+  </div>
+</div>

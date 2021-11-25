@@ -1,0 +1,36 @@
+<div>
+<h3><%= @list.name %></h3>
+<%= link_to 'Add a movie', new_movie_path(@movie), class: "btn btn-success"  %>
+</div>
+
+
+<div class="movie-cards">
+  <div class="list-text">
+    <h3>My Bookmarks</h3>
+    <%= link_to 'Create a bookmark', new_list_bookmark_path(@list), class: "btn btn-success"  %>
+  </div>
+  <div class="movie-card">
+      <% @bookmarks.each do |bookmark| %>
+        <div class="list-group-item">
+          <%= image_tag bookmark.movie.poster_url, class:"poster-img" %>
+          <div class="movie-card-text">
+            <h4><strong><%= bookmark.movie.title %> • <%= bookmark.movie.rating %><i class="fas fa-star star-yellow"></i></strong></h4>
+            <p><%= bookmark.movie.overview %></p>
+            <h4><em>"<%= bookmark.comment %>"</em></h4>
+
+            <div class="show-delete">
+              <%= link_to "See more", movie_path(bookmark.movie) %>
+              <%= link_to "Delete",
+                            bookmark_path(bookmark),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+  <%= button_to "Delete list",
+                        list_path(@list),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" }, class: "btn btn-success" %>
+</div>
